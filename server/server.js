@@ -12,6 +12,9 @@ const port = 5000;
 
 app.listen(port, () => console.log('listening on port', port));
 
-app.get('/quotes', (req, res)=>{
-    res.send(quotes);
+app.get('/quotes', (req, res)=>{ res.send(quotes);})
+
+app.post('/quotes', (req, res)=>{
+    quotes.push(req.body);
+    res.sendStatus(200);
 })

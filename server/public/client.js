@@ -2,7 +2,21 @@ $(document).ready(readyNow);
 
 function readyNow() {
     getQuotes();
-    
+    $('#addQuoteButton').on('click', addQuote)
+}
+
+function addQuote(){
+    let objectToSend = {
+        quote: $('#quoteText').val(),
+        author: $('#quoteAuthor').val()
+    };
+    $.ajax({
+        method: 'POST',
+        url: '/quotes',
+        data: objectToSend
+    }).then(function(response){
+        getQuotes();
+    })
 }
 
 function getQuotes() {
